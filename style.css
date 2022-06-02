@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,200;1,500&display=swap'); /* importar a fonte */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 10px;
+    font-family: 'Poppins', 'Times New Roman', Times, serif ; /* a segunda fonte é a fonte reserva */
+    scroll-behavior: smooth;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{ /*tratando a imagem*/
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+p {/*estilizando o paragrafo*/
+    font-size: 1.4rem;
+    margin-top: 5px;
+    line-height: 2.5rem;
+    font-weight: 200;
+    letter-spacing: 0.05rem;
+}
+nav {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    padding-right: 15px;
+}
+
+nav li {
+    display: inline;
+    margin: 0 0 0 15px; /* espaçamento do texto */ 
+}
+
+nav a {
+    text-transform: uppercase; /* deixar o texto em caixa alta */ 
+    color: #f3e9e9 ;
+    font-weight: bold; /* deixar em negrito */ 
+    font-size: 15px;  
+    text-decoration: none; /* para tirar o traçado de baixo do texto */ 
+}
+
+nav a:hover { /* para determinar o que quer fazer com o mouse quando estiver por cima do texo */ 
+    color: gold;
+    text-decoration: underline; /* fica sublinhado quando o mouse estiver por cima do link */
+}
+
+
+.container{
+    min-height: 100vh; /* que o usuário aperte o botão e não consiga ir para baixo sem essa ação */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.section-title { /*estilo do titulo portifolio*/
+    font-size: 4rem;
+    font-weight: 700;
+    color: rgb(4, 105, 21);
+    margin-bottom: 10px;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    text-align: center;
+}
+
+
+
+/* Seção de apresentação */
+
+#presentation{
+    background-image: url(./img/fundo2); /*imagem de fundo */
+    background-size: cover;
+    background-position: top center;
+    position: relative; /* que a imagem fique no centro e se posicione de acordo com a página */
+    z-index: 1; /*para deixar ele menos destacado*/
+}
+#presentation h1{ /* o que está escrito */
+    display: block;
+    width: fit-content;
+    font-size: 5rem;
+    position: relative;
+    color: transparent; /*para o texto não aparecer quando abrir, só quando for a animação*/
+    animation: text_reveal .5s ease forwards; /*definindo a animação*/
+    animation-delay: 1.5s;
+}
+#presentation h1:nth-child(1){ /*para cada div aparecer em sequencia */
+    animation-delay: .8s;
+}
+#presentation h1:nth-child(2){ /*para cada div aparecer em sequencia */
+    animation-delay: 1.8s;
+}
+#presentation h1:nth-child(3){ /*para cada div aparecer em sequencia */
+    animation: text_reveal_name .5s ease forwards; /*atribuindo uma animação especifica ao nome GABRIEL */
+    animation-delay: 2.8s;
+}
+#presentation .cta{ /* botão */
+    display: inline-block;
+    padding: 10px 30px;
+    color: gold;
+    background-color: transparent;
+    border: 2px solid gold;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-top: 20px;
+    transition: .5s ease; /*deixar mais suave ao passar o mouse e o ease é para parar */
+    transition-property: background-color, color; 
+
+}
+#presentation .cta:hover{ /* quando mouse passar por cima */
+    color: white;
+    font-weight: 500;
+    background-color: gold;
+}
+#presentation h1 span{ /* adicionando a animação, o span cria o elemento por cima do elemneto */
+    position: absolute;
+    top: 0;
+    left:0;
+    height: 100%;
+    width: 0%; /*para ele assim que rodar, sair*/
+    animation: text_reveal_box 1s ease;/*para deixar ele mais destacado*/
+    animation-delay: .5s; /*atribuindo a animação*/
+    background-color: gold;
+}
+#presentation h1:nth-child(1) span{ /*para fazer com que a animação suma e apareça um de cada vez*/
+    animation-delay: .5s;
+}
+#presentation h1:nth-child(2) span{ /*para cada div aparecer em sequencia */
+    animation-delay: 1.5s;
+}
+#presentation h1:nth-child(3) span{ /*para cada div aparecer em sequencia */
+    animation-delay: 2.5s;
+}
+#presentation::after{ /* para colocar por cima da imagem*/
+    content: '';
+    position: absolute;
+    left:0;
+    top: 0;
+    height:100%;
+    width: 100%;
+    background-color:black;
+    opacity: 0.5; /* se não colocar não vai aparecer a imagem */
+    z-index: -1; /*para deixar ele mais destacado*/
+}
+
+/* Seção de Portifólio */
+
+#portfolio .portfolio{
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 0;
+}
+#portfolio .portfolio-header h1{
+    margin-bottom: 50px;
+}
+
+
+#portfolio .all-projects {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#portfolio .project-item{
+    display:flex; /*para não ocupar a tela toda*/
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 10px; /*arredondar*/
+}
+
+#portfolio .project-info {
+    padding: 30px;
+    flex-basis: 50%; /*para deixar responsivo*/
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    background-image: linear-gradient(60deg, #069b06 0%, #021224 100%);
+    color: white;
+}
+
+#portfolio .project-info h1{
+    font-size: 4rem;
+    font-weight: 500;
+    font-style: italic;
+    color: gold;
+    
+}
+
+#portfolio .project-info h2{
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+#portfolio .project-img { 
+    flex-basis: 50%;
+    height: 300px;
+    overflow: hidden; /*para deixar ela do tamanho do card*/
+    position: relative; /*para deixar responsivo*/
+}
+
+#portfolio .project-img:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top:0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(60deg, #08aa4b 0%, #08aa4b 100%); /*definir um filtro para imagem de onde eu começo ate onde vai*/
+    opacity: 0.0; /*deixar a imagem mais opaca*/
+}
+#portfolio .project-img img{ /*para deixar mais suave ao passar o mouse*/
+    transition: 0.5s ease transform;
+}
+#portfolio .project-item:hover .project-img img{ /*para dar zoom ao passar o mouse por cima*/
+    transform: scale(1.1);
+}
+
+.copyright { /* estilizando a letra do rodapé */
+    color: #0f0808;
+    font-size: 13px;
+    margin: 20px;
+    text-align: center;
+  }
+/* Keyframes */ /*animação*/
+
+@keyframes text_reveal{ 
+    100%{
+        color: white;
+    }
+}
+@keyframes text_reveal_name{ /*essa parte serve para destacar o nome GABRIEL */
+    100%{
+        color: gold;
+        font-weight: 500px;
+    }
+}
+
+@keyframes text_reveal_box{
+    50%{
+        width:100%;
+        left:0;
+    }
+    100%{
+        width: 0;
+        left:100%
+    }
+}
+
+/* Media Query */
+@media only screen and (min-width: 768px) { /*media query serve para criar estilos especificos para tamanho de telas diferentes*/
+    #portfolio .project-item {
+        flex-direction: row;
+        height: 400px;
+        margin: 0;
+        width: 100%;
+        border-radius: 0;
+    }
+    #portfolio .all-projects .project-info{
+        height: 100%
+    }
+    #portfolio .all-projects .project-img{
+        height: 100%
+    }
+    #portfolio .project-item:nth-child(even) { /*ele vai pegar os numeros pares e deixar intercalando*/
+        flex-direction: row-reverse; /*para deixar tipo um xadrex as imagens */
+    }
+
+
+}
